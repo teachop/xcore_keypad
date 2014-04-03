@@ -64,10 +64,10 @@ void keypad_task(out port drive, in port sense, interface keypad_if server dvr) 
             // sample inputs after 1 tick to settle
             uint32_t key_in;
             sense :> key_in;
-            pressed = (pressed<<4) | (0x0f&key_in);
+            pressed = (pressed<<4) | key_in;
             // completed scan of keypad
             if ( ++scan >= 4 ) {
-                hold_off = (!pressed && (10<hold_off))? 8 : (hold_off? hold_off-1 : 0);
+                hold_off = (!pressed && (8<hold_off))? 8 : (hold_off? hold_off-1 : 0);
                 if ( !hold_off ) {
                     uint32_t valid_key = decode(pressed);
                     if ( valid_key ) {
