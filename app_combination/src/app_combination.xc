@@ -11,7 +11,7 @@
 #include "seven_seg.h"
 #include "keypad.h"
 
-#define COMBINATION 1234//luggage
+#define COMBINATION 1234
 
 
 // ---------------------------------------------------------
@@ -22,19 +22,11 @@ void lock_task(interface keypad_if client keypad, interface seven_seg_if client 
     uint8_t oops[]= "OOpS";
     uint32_t counter = 0;
 
-    const uint32_t tick_rate = 2*1000*100;
-    timer tick;
-    uint32_t next_tick;
-    tick :> next_tick;
-
-    display.setValue(0,0,1);
+    // initial display, no decimal places, use leading zeros
+    display.setValue(counter,0,1);
 
     while (1) {
         select {
-        case tick when timerafter(next_tick) :> void:
-            // tick not used just yet
-            next_tick += tick_rate;
-            break;
         case keypad.keyPressed():
             // key-press notification, go get it
             uint32_t pressed = keypad.getKey();
