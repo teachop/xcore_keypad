@@ -8,7 +8,17 @@ For an xCore xC application, the required modules are listed in the Makefile:
 - USED_MODULES = module_seven_seg module_keypad
 
 ###Wiring
-The display uses a single pin for serial data.  The demo wires this to a 4-wide port LSB, but normally this would be a single output port pin.  The matrix requires two 4-wide ports, one output to drive the columns, one input to read the rows.  Internall pull-downs in the startKIT CPU are used to keep the keys off when not pressed.
-- **XS1_PORT_4E**  Column driver, j7.22, 24, 16, 18
-- **XS1_PORT_4D**  Row inputs, j7.9, 13, 12, 14
+The display uses a single pin for serial data.  The demo wires this to a 4-wide port LSB, but normally this would be a single output port pin.  The matrix requires two 4-wide ports, one output to drive the keypad, one to sense the inputs.  Internal pull-downs in the startKIT CPU are used to keep the keys off when not pressed.  For a "production job" external resistors are recommended.
+- **XS1_PORT_4E**  Drive, j7.22, 24, 16, 18
+- **XS1_PORT_4D**  Sense, j7.9, 13, 12, 14
 - **XS1_PORT_4C**  TXD UART transmit, j7.5, [6, 7, 8]
+
+Keypad connector pinout varies, this is just one example:
+
+|    4x4    | pin 5 | pin 6 | pin 7 | pin 8 |
+|:---------:|:-----:|:-----:|:-----:|:-----:|
+| **pin 1** |   1   |   2   |   3   |   A   |
+| **pin 2** |   4   |   5   |   6   |   B   |
+| **pin 3** |   7   |   8   |   9   |   C   |
+| **pin 4** |   *   |   0   |   #   |   D   |
+
