@@ -17,6 +17,7 @@ interface keypad_if {
 
 };
 
+[[combinable]]
 void keypad_task(out port drive, in port sense, interface keypad_if server dvr);
 
 

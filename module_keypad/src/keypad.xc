@@ -37,6 +37,7 @@ static uint32_t decode(uint32_t keys) {
 // ---------------------------------------------------------
 // keypad_task - Matrix keypad driver
 //
+[[combinable]]
 void keypad_task(out port drive, in port sense, interface keypad_if server dvr) {
     uint32_t scan = 0;
     uint32_t pressed = 0;
