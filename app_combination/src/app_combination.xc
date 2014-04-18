@@ -79,7 +79,7 @@ int main() {
     par {
         lock_task(keypad, display);
         keypad_task(drive_pins, sense_pins, keypad);
-        seven_seg_task(txd_pin, display);
+        seven_seg_task(txd_pin, 9600, display);
     }
 
     return 0;
