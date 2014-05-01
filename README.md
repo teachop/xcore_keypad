@@ -6,7 +6,7 @@ The driver is a task function that scans a 4x4 keypad (example known to work [he
 
 Note that the driver is designed to reject multiple simultaneous key presses - no valid key will be detected until only one key is down.
 
-Application clients use the driver by means of an XC [interface](https://www.xmos.com/support/documentation/xtools?subcategory=Programming%20in%20C%20and%20XC&component=app_interfaces_example) API.  This is an XCore message passing inter-task communication feature.  An interface feature called **notification** is used to generate a data-read events for the client application when a valid key press has been detected.
+Application clients use the driver by means of an XC [interface](https://www.xmos.com/support/documentation/xtools?subcategory=xTIMEcomposer&component=17653&page=23#xc-prog-guide-interface-connection) API.  This is an XCore message passing inter-task communication feature.  An interface feature called **notification** is used to generate a data-read events for the client application when a valid key press has been detected.
 
 ###Timing
 The driver task uses a timer resource to generate the scanning tick, and also to provide a timebase for switch debounce, pause, and auto-repeat features.  If a key continues to be held down after the initial key press event, the driver will first pause (640 milliseconds) and then generate rapid key repeats (160 milliseconds) similar to a computer keyboard.
